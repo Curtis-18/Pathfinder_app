@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up - Pathfinder AI</title>
+    <style>
+        body { background: #f5f6fa; font-family: 'Segoe UI', Arial, sans-serif; }
+        .container { max-width: 400px; margin: 80px auto; background: #fff; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.08); padding: 32px; }
+        h2 { text-align: center; color: #3a3a3a; margin-bottom: 24px; }
+        form { display: flex; flex-direction: column; gap: 18px; }
+        input[type="text"], input[type="password"] {
+            padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem;
+        }
+        button { background: linear-gradient(90deg, #667eea, #764ba2); color: #fff; border: none; border-radius: 8px; padding: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+        button:hover { background: linear-gradient(90deg, #5a67d8, #6b46c1); }
+        .switch-link { text-align: center; margin-top: 12px; }
+        .switch-link a { color: #667eea; text-decoration: none; font-weight: 500; }
+        .error { color: #c53030; text-align: center; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Create Your Pathfinder Account</h2>
+        {% if error %}<div class="error">{{ error }}</div>{% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required autofocus>
+            <input type="password" name="password1" placeholder="Password" required>
+            <input type="password" name="password2" placeholder="Confirm Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+        <div class="switch-link">
+            Already have an account? <a href="{% url 'login' %}">Login</a>
+        </div>
+    </div>
+</body>
+</html>
